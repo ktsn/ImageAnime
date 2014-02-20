@@ -53,4 +53,8 @@ class ImageAnimePlayer
   imageChange: (images, current) =>
     @monitor.src = images[current]
     @prev_monitor.src = images[current - 1] if current > 0
-    @next_monitor.src = images[current + 1] if current < images.length - 1
+
+    if current < images.length - 1
+      @next_monitor.src = images[current + 1]
+    else
+      @pause()

@@ -36,11 +36,10 @@ class ImageAnime
     @setTransitionTimer(index + 1) if @state >= ImageAnimeState.loadingAndPausing
 
   setTransitionTimer: (next_index) ->
-    if next_index > @term_index
-      @pause()
-      return
-
     clearTimeout @timer if @timer != null
+
+    if next_index > @term_index
+      return
 
     @timer = setTimeout () =>
       @jumpFrame(next_index)
