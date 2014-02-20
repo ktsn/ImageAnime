@@ -22,12 +22,12 @@ class ImageAnimePlayer
     @el.appendChild(@monitor)
     @el.appendChild(@next_monitor)
 
-    @controller = new IAPlayerController(this)
-
     @anime_backend = new ImageAnime(image_urls, times)
     @anime_backend.onChangeFrame = @imageChange
 
     @jumpFrame(0)
+
+    @controller = new IAPlayerController(this)
 
   play: () ->
     @anime_backend.play()

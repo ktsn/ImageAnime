@@ -15,9 +15,11 @@ class IAPlayerController
 
     @player.el.appendChild(@el)
 
+    @player.play()
+
   createPlayToggleBtn: () ->
     btn = document.createElement("button")
-    btn.className = "ia-play-btn ia-play"
+    btn.className = "ia-play-btn ia-pause"
 
     btn.onclick = () =>
       if @is_play
