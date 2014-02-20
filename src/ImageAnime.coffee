@@ -5,12 +5,12 @@ ImageAnimeState =
   playing: 3
 
 class ImageAnime
-  index: 0,
-  frames: null,
-  times: null,
+  index: 0
+  frames: null
+  times: null
   term_index: -1
   state: ImageAnimeState.stopped
-  timer: null,
+  timer: null
 
   constructor: (@frames, @times) ->
     @term_index = @frames.length - 1
