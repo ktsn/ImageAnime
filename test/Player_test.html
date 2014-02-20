@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../build/ImageAnime.js"></script>
+    <script src="../build/ImageAnimePlayer.js"></script>
+    <title>Player Test</title>
+    <script>
+        window.onload = function() {
+            var div = document.getElementById("player");
+            var images = [
+                "images/01.jpg",
+                "images/02.jpg",
+                "images/03.jpg",
+                "images/04.jpg",
+                "images/05.jpg",
+                "images/06.jpg",
+                "images/07.jpg",
+                "images/08.jpg",
+                "images/09.jpg",
+                "images/10.jpg"
+            ];
+            var times = [0, 1000, 3000, 3500, 5000, 6000, 10000, 11000, 11500, 12000];
+            var player = new ImageAnimePlayer(div, images, times);
+
+            document.getElementById("play").addEventListener("click", function(e) {
+                player.play();
+            });
+
+            document.getElementById("pause").addEventListener("click", function(e) {
+                player.pause();
+            });
+
+            document.getElementById("stop").addEventListener("click", function(e) {
+                player.stop();
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="player" style="height: 300px; width: 400px;"></div>
+<button id="play">Play</button>
+<button id="pause">Pause</button>
+<button id="stop">Stop</button>
+</body>
+</html>
