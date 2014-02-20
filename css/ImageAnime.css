@@ -16,6 +16,26 @@
 
 .ia-controller {
     background-color: gray;
+    box-sizing: border-box;
     height: 30px;
+    padding: 3px;
+    text-align: left;
     width: 100%;
+}
+
+.ia-play-btn {
+    height: 24px;
+    width: 24px;
+}
+
+.ia-play:before {
+    content: "Play";
+    height: 24px;
+    width: 24px;
+}
+
+.ia-pause:before {
+    content: "Pause";
+    height: 24px;
+    width: 24px;
 }

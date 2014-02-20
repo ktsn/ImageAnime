@@ -6,12 +6,42 @@ IAPlayerController = (function() {
 
   IAPlayerController.prototype.player = null;
 
+  IAPlayerController.prototype.play_toggle_btn = null;
+
+  IAPlayerController.prototype.time_slider = null;
+
+  IAPlayerController.prototype.is_play = false;
+
   function IAPlayerController(player) {
     this.player = player;
     this.el = document.createElement("div");
     this.el.className = "ia-controller";
+    this.play_toggle_btn = this.createPlayToggleBtn();
+    this.el.appendChild(this.play_toggle_btn);
     this.player.el.appendChild(this.el);
   }
+
+  IAPlayerController.prototype.createPlayToggleBtn = function() {
+    var btn;
+    btn = document.createElement("button");
+    btn.className = "ia-play-btn ia-play";
+    btn.onclick = (function(_this) {
+      return function() {
+        if (_this.is_play) {
+          _this.player.pause();
+          _this.is_play = false;
+          _this.play_toggle_btn.classList.remove("ia-pause");
+          return _this.play_toggle_btn.classList.add("ia-play");
+        } else {
+          _this.player.play();
+          _this.is_play = true;
+          _this.play_toggle_btn.classList.remove("ia-play");
+          return _this.play_toggle_btn.classList.add("ia-pause");
+        }
+      };
+    })(this);
+    return btn;
+  };
 
   return IAPlayerController;
 
