@@ -31,6 +31,7 @@ class ImageAnimePlayer
     @play()
 
   play: () ->
+    @jumpFrame(0) if @anime_backend.index >= @anime_backend.term_index
     @anime_backend.play()
     @controller.setIsPlay(true)
 
