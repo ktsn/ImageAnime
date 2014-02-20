@@ -51,7 +51,7 @@ ImageAnime = (function() {
 
   ImageAnime.prototype.jumpFrame = function(index) {
     this.index = index;
-    this.onChangeFrame(this.frames[index]);
+    this.onChangeFrame(this.frames, index);
     if (this.state >= ImageAnimeState.loadingAndPausing) {
       return this.setTransitionTimer(index + 1);
     }
@@ -74,13 +74,13 @@ ImageAnime = (function() {
 
 
   /*
-   Notification function of ImageAnime
+   Notification function for Player
   =============================================
    */
 
   ImageAnime.prototype.onStartAnime = function() {};
 
-  ImageAnime.prototype.onChangeFrame = function(frame) {};
+  ImageAnime.prototype.onChangeFrame = function(frames, current) {};
 
   ImageAnime.prototype.onStopAnime = function() {};
 

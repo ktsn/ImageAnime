@@ -32,7 +32,7 @@ class ImageAnime
 
   jumpFrame: (index) ->
     @index = index
-    @onChangeFrame(@frames[index])
+    @onChangeFrame(@frames, index)
     @setTransitionTimer(index + 1) if @state >= ImageAnimeState.loadingAndPausing
 
   setTransitionTimer: (next_index) ->
@@ -47,10 +47,10 @@ class ImageAnime
     , @times[next_index] - @times[next_index - 1]
 
   ###
-   Notification function of ImageAnime
+   Notification function for Player
   =============================================
   ###
 
   onStartAnime: () ->
-  onChangeFrame: (frame) ->
+  onChangeFrame: (frames, current) ->
   onStopAnime: () ->
