@@ -25,18 +25,22 @@ class ImageAnimePlayer
     @anime_backend = new ImageAnime(image_urls, times)
     @anime_backend.onChangeFrame = @imageChange
 
-    @jumpFrame(0)
-
     @controller = new IAPlayerController(this)
+
+    @jumpFrame(0)
+    @play()
 
   play: () ->
     @anime_backend.play()
+    @controller.setIsPlay(true)
 
   pause: () ->
     @anime_backend.pause()
+    @controller.setIsPlay(false)
 
   stop: () ->
     @anime_backend.stop()
+    @controller.setIsPlay(false)
 
   jumpFrame: (index) ->
     @anime_backend.jumpFrame(index)
