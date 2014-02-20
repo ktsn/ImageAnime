@@ -15,7 +15,7 @@
 }
 
 .ia-controller {
-    background-color: gray;
+    background-color: black;
     box-sizing: border-box;
     height: 30px;
     padding: 3px;
@@ -24,18 +24,24 @@
 }
 
 .ia-play-btn {
+    background: none;
+    border: none;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    width: 24px;
+}
+
+.ia-play-btn:before {
+    display: block;
     height: 24px;
     width: 24px;
 }
 
 .ia-play:before {
-    content: "Play";
-    height: 24px;
-    width: 24px;
+    content: url("./images/PlayButton.png");
 }
 
 .ia-pause:before {
-    content: "Pause";
-    height: 24px;
-    width: 24px;
+    content: url("./images/PauseButton.png");
 }
