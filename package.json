@@ -1,0 +1,20 @@
+{
+  "name": "ImageAnime",
+  "version": "0.0.0",
+  "description": "ImageAnime is the library that animate images frame by frame.",
+  "main": "build/ImageAnime.js",
+  "scripts": {
+    "build": "coffee -bc -o build/ src/ImageAnime.coffee",
+    "test": "mocha --reporter spec test/ImageAnime_test.js"
+  },
+  "repository": "",
+  "keywords": [
+    "Image",
+    "Animation"
+  ],
+  "author": "katashin",
+  "license": "BSD",
+  "devDependencies": {
+    "coffee-script": "~1.7.1"
+  }
+}

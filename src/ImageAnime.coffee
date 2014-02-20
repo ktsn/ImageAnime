@@ -1,0 +1,56 @@
+ImageAnimeState =
+  stopped: 0
+  pausing: 1
+  loadingAndPausing: 2
+  playing: 3
+
+class ImageAnime
+  index: 0,
+  frames: null,
+  times: null,
+  term_index: -1
+  state: ImageAnimeState.stopped
+  timer: null,
+
+  constructor: (@frames, @times) ->
+    @term_index = @frames.length - 1
+
+  play: () ->
+    @state = ImageAnimeState.playing
+    @setTransigionTimer(@index + 1)
+    @onStartAnime()
+
+  pause: () ->
+    clearTimeout @timer if @timer != null
+    @state = ImageAnimeState.pausing
+
+  stop: () ->
+    clearTimeout @timer if @timer != null
+    @state = ImageAnimeState.stopped
+    @jumpFrame 0
+    @onStopAnime()
+
+  jumpFrame: (index) ->
+    @index = index
+    @onChangeFrame(@frames[index])
+    @setTransigionTimer(index + 1) if @state >= ImageAnimeState.loadingAndPausing
+
+  setTransigionTimer: (next_index) ->
+    clearTimeout @timer if @timer != null
+
+    if next_index > @term_index
+      @stop()
+      return
+
+    @timer = setTimeout () =>
+      @jumpFrame(next_index)
+    , @times[next_index] - @times[next_index - 1]
+
+  ###
+   Notification function of ImageAnime
+  =============================================
+  ###
+
+  onStartAnime: () ->
+  onChangeFrame: (frame) ->
+  onStopAnime: () ->
