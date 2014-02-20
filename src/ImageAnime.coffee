@@ -17,7 +17,7 @@ class ImageAnime
 
   play: () ->
     @state = ImageAnimeState.playing
-    @setTransigionTimer(@index + 1)
+    @setTransitionTimer(@index + 1)
     @onStartAnime()
 
   pause: () ->
@@ -33,9 +33,9 @@ class ImageAnime
   jumpFrame: (index) ->
     @index = index
     @onChangeFrame(@frames[index])
-    @setTransigionTimer(index + 1) if @state >= ImageAnimeState.loadingAndPausing
+    @setTransitionTimer(index + 1) if @state >= ImageAnimeState.loadingAndPausing
 
-  setTransigionTimer: (next_index) ->
+  setTransitionTimer: (next_index) ->
     clearTimeout @timer if @timer != null
 
     if next_index > @term_index

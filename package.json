@@ -4,7 +4,7 @@
   "description": "ImageAnime is the library that animate images frame by frame.",
   "main": "build/ImageAnime.js",
   "scripts": {
-    "build": "coffee -bc -o build/ src/ImageAnime.coffee",
+    "build": "coffee -bc -o build/ src/"
   },
   "repository": "",
   "keywords": [

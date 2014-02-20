@@ -29,7 +29,7 @@ ImageAnime = (function() {
 
   ImageAnime.prototype.play = function() {
     this.state = ImageAnimeState.playing;
-    this.setTransigionTimer(this.index + 1);
+    this.setTransitionTimer(this.index + 1);
     return this.onStartAnime();
   };
 
@@ -53,11 +53,11 @@ ImageAnime = (function() {
     this.index = index;
     this.onChangeFrame(this.frames[index]);
     if (this.state >= ImageAnimeState.loadingAndPausing) {
-      return this.setTransigionTimer(index + 1);
+      return this.setTransitionTimer(index + 1);
     }
   };
 
-  ImageAnime.prototype.setTransigionTimer = function(next_index) {
+  ImageAnime.prototype.setTransitionTimer = function(next_index) {
     if (this.timer !== null) {
       clearTimeout(this.timer);
     }
