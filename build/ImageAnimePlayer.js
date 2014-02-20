@@ -16,11 +16,12 @@ ImageAnimePlayer = (function() {
   function ImageAnimePlayer(el, image_urls, times) {
     this.el = el;
     this.imageChange = __bind(this.imageChange, this);
+    this.el.className = "ia-player";
     this.monitor = document.createElement("img");
-    this.monitor.style.height = this.monitor.style.width = "100%";
+    this.monitor.className = "ia-monitor";
     this.prev_monitor = this.monitor.cloneNode(false);
     this.next_monitor = this.monitor.cloneNode(false);
-    this.prev_monitor.style.display = this.next_monitor.style.display = "none";
+    this.monitor.classList.add("ia-monitor-current");
     this.el.appendChild(this.prev_monitor);
     this.el.appendChild(this.monitor);
     this.el.appendChild(this.next_monitor);

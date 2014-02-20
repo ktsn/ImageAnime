@@ -6,11 +6,15 @@ class ImageAnimePlayer
   anime_backend: null
 
   constructor: (@el, image_urls, times) ->
+    @el.className = "ia-player"
+
     @monitor = document.createElement("img")
-    @monitor.style.height = @monitor.style.width = "100%"
+    @monitor.className = "ia-monitor"
+
     @prev_monitor = @monitor.cloneNode(false)
     @next_monitor = @monitor.cloneNode(false)
-    @prev_monitor.style.display = @next_monitor.style.display = "none"
+
+    @monitor.classList.add("ia-monitor-current")
 
     @el.appendChild(@prev_monitor)
     @el.appendChild(@monitor)

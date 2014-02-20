@@ -1,0 +1,15 @@
+.ia-player {
+    background-color: black;
+    text-align: center;
+}
+
+.ia-monitor {
+    display: none;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.ia-monitor-current {
+    display: block;
+}
