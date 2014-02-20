@@ -58,12 +58,12 @@ ImageAnime = (function() {
   };
 
   ImageAnime.prototype.setTransitionTimer = function(next_index) {
+    if (next_index > this.term_index) {
+      this.pause();
+      return;
+    }
     if (this.timer !== null) {
       clearTimeout(this.timer);
-    }
-    if (next_index > this.term_index) {
-      this.stop();
-      return;
     }
     return this.timer = setTimeout((function(_this) {
       return function() {
