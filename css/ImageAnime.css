@@ -13,3 +13,9 @@
 .ia-monitor-current {
     display: block;
 }
+
+.ia-controller {
+    background-color: gray;
+    height: 30px;
+    width: 100%;
+}

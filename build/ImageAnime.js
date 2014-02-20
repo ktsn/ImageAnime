@@ -1,5 +1,21 @@
-var ImageAnime, ImageAnimePlayer, ImageAnimeState,
+var IAPlayerController, ImageAnime, ImageAnimePlayer, ImageAnimeState,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+IAPlayerController = (function() {
+  IAPlayerController.prototype.el = null;
+
+  IAPlayerController.prototype.player = null;
+
+  function IAPlayerController(player) {
+    this.player = player;
+    this.el = document.createElement("div");
+    this.el.className = "ia-controller";
+    this.player.el.appendChild(this.el);
+  }
+
+  return IAPlayerController;
+
+})();
 
 ImageAnimeState = {
   stopped: 0,
@@ -91,6 +107,8 @@ ImageAnime = (function() {
 ImageAnimePlayer = (function() {
   ImageAnimePlayer.prototype.el = null;
 
+  ImageAnimePlayer.prototype.controller = null;
+
   ImageAnimePlayer.prototype.monitor = null;
 
   ImageAnimePlayer.prototype.prev_monitor = null;
@@ -111,6 +129,7 @@ ImageAnimePlayer = (function() {
     this.el.appendChild(this.prev_monitor);
     this.el.appendChild(this.monitor);
     this.el.appendChild(this.next_monitor);
+    this.controller = new IAPlayerController(this);
     this.anime_backend = new ImageAnime(image_urls, times);
     this.anime_backend.onChangeFrame = this.imageChange;
     this.jumpFrame(0);

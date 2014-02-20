@@ -1,5 +1,6 @@
 class ImageAnimePlayer
   el: null
+  controller: null
   monitor: null
   prev_monitor: null
   next_monitor: null
@@ -20,6 +21,8 @@ class ImageAnimePlayer
     @el.appendChild(@prev_monitor)
     @el.appendChild(@monitor)
     @el.appendChild(@next_monitor)
+
+    @controller = new IAPlayerController(this)
 
     @anime_backend = new ImageAnime(image_urls, times)
     @anime_backend.onChangeFrame = @imageChange
