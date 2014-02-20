@@ -18,7 +18,7 @@ describe('The test on event handler', function() {
     it('calls onChangeFrame after calls jumpFrame', function() {
         spyOn(anime, 'onChangeFrame');
         anime.jumpFrame(3);
-        expect(anime.onChangeFrame).toHaveBeenCalledWith(images[3]);
+        expect(anime.onChangeFrame).toHaveBeenCalledWith(images, 3);
     });
 
     it('calls onStopAnime after calls stop', function() {
@@ -66,7 +66,7 @@ describe('The test on event handler', function() {
         runs(function() {
             var args = anime.onChangeFrame.argsForCall;
             for (var i = 0; i < args.length; i++) {
-                expect(args[i][0]).toEqual(images[i + 1]);
+                expect(args[i][1]).toEqual(i + 1);
             }
         });
     });
