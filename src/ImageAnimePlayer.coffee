@@ -11,6 +11,7 @@ class ImageAnimePlayer
     @monitor = document.createElement("img")
     @monitor.className = "ia-monitor"
 
+    # for pre-loading images
     @prev_monitor = @monitor.cloneNode(false)
     @next_monitor = @monitor.cloneNode(false)
 
@@ -36,6 +37,11 @@ class ImageAnimePlayer
 
   jumpFrame: (index) ->
     @anime_backend.jumpFrame(index)
+
+  ###
+   Callback functions from backend
+  ===============================================
+  ###
 
   imageChange: (images, current) =>
     @monitor.src = images[current]
