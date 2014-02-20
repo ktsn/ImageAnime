@@ -5,7 +5,6 @@
   "main": "build/ImageAnime.js",
   "scripts": {
     "build": "coffee -bc -o build/ src/ImageAnime.coffee",
-    "test": "mocha --reporter spec test/ImageAnime_test.js"
   },
   "repository": "",
   "keywords": [
