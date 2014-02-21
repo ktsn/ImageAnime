@@ -8,6 +8,8 @@ class ImageAnimePlayer
 
   constructor: (@el, image_urls, times) ->
     @el.className = "ia-player"
+    while @el.childNodes.length > 0
+      @el.removeChild(@el.lastChild)
 
     @monitor = document.createElement("img")
     @monitor.className = "ia-monitor"
