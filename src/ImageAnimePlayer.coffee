@@ -48,13 +48,25 @@ class ImageAnimePlayer
   jumpFrame: (index) ->
     @anime_backend.jumpFrame(index)
 
-  ###
-   Callback functions from backend
-  ===============================================
-  ###
+  fitMonitor: () =>
+    v_scale = @el.offsetHeight / @monitor.height
+    h_scale = @el.offsetWidth / @monitor.width
+    if v_scale < h_scale
+      @monitor.classList.add("ia-monitor-v-fit")
+      @monitor.classList.remove("ia-monitor-h-fit")
+    else
+      @monitor.classList.add("ia-monitor-h-fit")
+      @monitor.classList.remove("ia-monitor-v-fit")
+
+    ###
+     Callback functions from backend
+    ===============================================
+    ###
 
   imageChange: (images, current) =>
     @monitor.src = images[current]
+    @monitor.onload = @fitMonitor
+
     @prev_monitor.src = images[current - 1] if current > 0
 
     if current < images.length - 1

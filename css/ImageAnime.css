@@ -15,6 +15,14 @@
     display: block;
 }
 
+.ia-monitor-h-fit {
+    width: 100%;
+}
+
+.ia-monitor-v-fit {
+    height: 100%;
+}
+
 .ia-controller {
     background-color: black;
     bottom: 0;
