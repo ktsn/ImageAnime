@@ -7,9 +7,9 @@ class ImageAnimePlayer
   anime_backend: null
 
   constructor: (@el, image_urls, times) ->
-    @el.className = "ia-player"
     while @el.childNodes.length > 0
       @el.removeChild(@el.lastChild)
+    @el.classList.add("ia-player")
 
     @monitor = document.createElement("img")
     @monitor.className = "ia-monitor"
