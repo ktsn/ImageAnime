@@ -5,14 +5,10 @@
 }
 
 .ia-monitor {
-    display: none;
+    display: block;
     margin: auto;
     max-height: 100%;
     max-width: 100%;
-}
-
-.ia-monitor-current {
-    display: block;
 }
 
 .ia-monitor-h-fit {
