@@ -12,8 +12,10 @@ class ImageAnime
   state: ImageAnimeState.stopped
   timer: null
 
-  constructor: (@frames, @times) ->
-    @term_index = @frames.length - 1
+  constructor: (@frame_urls, @times) ->
+    @frames = new Array(@frame_urls.length)
+    @term_index = @frame_urls.length - 1
+    @loadFrame(@index)
 
   play: () ->
     @state = ImageAnimeState.playing
@@ -30,6 +32,11 @@ class ImageAnime
     @jumpFrame 0
     @onStopAnime()
 
+  loadFrame: (index) ->
+    if @frame_urls[index]?
+      IAUtil.ajaxGetBlob @frame_urls[index], (frame) =>
+        @onLoadFrame(frame, index)
+
   jumpFrame: (index) ->
     @index = index
     @onChangeFrame(@frames, index)
@@ -44,8 +51,24 @@ class ImageAnime
       return
 
     @timer = setTimeout () =>
+      if @frames[next_index] == undefined
+        @state = ImageAnimeState.loadingAndPausing
+        return
       @jumpFrame(next_index)
     , @times[next_index] - @times[next_index - 1]
+
+  ###
+  =============================================
+   notification function
+  =============================================
+  ###
+
+  onLoadFrame: (frame, index) ->
+    @frames[index] = URL.createObjectURL(new Blob([frame], { type: "image/jpeg" })) # setting MIME type to image
+    @loadFrame(index + 1)
+
+    if @state == ImageAnimeState.loadingAndPausing && @index + 1 == index
+      @jumpFrame(index)
 
   ###
    Notification function for Player
