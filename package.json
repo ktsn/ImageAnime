@@ -1,6 +1,6 @@
 {
   "name": "ImageAnime",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "ImageAnime is the library that animate images frame by frame.",
   "main": "build/ImageAnime.js",
   "scripts": {
