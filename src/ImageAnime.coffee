@@ -67,7 +67,7 @@ class ImageAnime
     @frames[index] = URL.createObjectURL(new Blob([frame], { type: "image/jpeg" })) # setting MIME type to image
     @loadFrame(index + 1)
 
-    if @state == ImageAnimeState.loadingAndPausing && @index + 1 == index
+    if (@state == ImageAnimeState.loadingAndPausing && @index + 1 == index) || @index == index
       @jumpFrame(index)
 
   ###
