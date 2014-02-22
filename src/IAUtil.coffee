@@ -2,11 +2,10 @@ class IAUtil
   @ajaxGetBlob: (url, success, error) ->
     xhr = new XMLHttpRequest()
     xhr.open("get", url)
-    xhr.responseType = "arrayBuffer"
+    xhr.responseType = "blob"
 
     xhr.onload = (e) ->
-      blob = new Blob([xhr.response])
-      success(blob)
+      success(xhr.response)
 
     xhr.onerror = error
 
