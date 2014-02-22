@@ -12,7 +12,7 @@ class IAUtil
     xhr.send()
 
   @getURLWithParams: (url, params) ->
-    return url if !params || Object.keys(params).length == 0
+    return url if !params? || Object.keys(params).length == 0
 
     params_array = Object.keys(params).map((key) -> key + "=" + params[key])
     url + "?" + params_array.join("&")
